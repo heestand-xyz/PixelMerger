@@ -1,0 +1,10 @@
+.DS_Store
+
+xcuserdata/
+
+Pods/*
+*.xcworkspace
+Podfile.lock
+
+*.mov
+*.mp4

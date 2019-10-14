@@ -7,13 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24FDB6CC57602FBAA7CBDBD1 /* Pods_PixelMerger_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF439307B221ACE1CB3C3A4 /* Pods_PixelMerger_macOS.framework */; };
 		3A66FF83235499FE009DE9DF /* PixelMerger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A66FF81235499FE009DE9DF /* PixelMerger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A66FFB623549B90009DE9DF /* Count.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB323549B90009DE9DF /* Count.mov */; };
+		3A66FFB723549B90009DE9DF /* Count.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB323549B90009DE9DF /* Count.mov */; };
+		3A66FFB823549B90009DE9DF /* sample_iTunes.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB423549B90009DE9DF /* sample_iTunes.mov */; };
+		3A66FFB923549B90009DE9DF /* sample_iTunes.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB423549B90009DE9DF /* sample_iTunes.mov */; };
+		3A66FFBA23549B90009DE9DF /* In The Forrest 03.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB523549B90009DE9DF /* In The Forrest 03.mp4 */; };
+		3A66FFBB23549B90009DE9DF /* In The Forrest 03.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3A66FFB523549B90009DE9DF /* In The Forrest 03.mp4 */; };
+		3A66FFBD23549BAC009DE9DF /* PixelMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66FFBC23549BAC009DE9DF /* PixelMerger.swift */; };
+		3A66FFBE23549BAC009DE9DF /* PixelMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66FFBC23549BAC009DE9DF /* PixelMerger.swift */; };
+		556143A7AEA67ED1C784A698 /* Pods_PixelMerger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26CD95D5AE13CE06779E5BC /* Pods_PixelMerger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3952CE39A09536E0FDFEE807 /* Pods-PixelMerger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelMerger.debug.xcconfig"; path = "Target Support Files/Pods-PixelMerger/Pods-PixelMerger.debug.xcconfig"; sourceTree = "<group>"; };
 		3A66FF7E235499FE009DE9DF /* PixelMerger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PixelMerger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A66FF81235499FE009DE9DF /* PixelMerger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixelMerger.h; sourceTree = "<group>"; };
 		3A66FF82235499FE009DE9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A66FF8E23549A18009DE9DF /* PixelMerger_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PixelMerger_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A66FF9023549A18009DE9DF /* PixelMerger_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixelMerger_macOS.h; sourceTree = "<group>"; };
+		3A66FFB323549B90009DE9DF /* Count.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Count.mov; sourceTree = "<group>"; };
+		3A66FFB423549B90009DE9DF /* sample_iTunes.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample_iTunes.mov; sourceTree = "<group>"; };
+		3A66FFB523549B90009DE9DF /* In The Forrest 03.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "In The Forrest 03.mp4"; sourceTree = "<group>"; };
+		3A66FFBC23549BAC009DE9DF /* PixelMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelMerger.swift; sourceTree = "<group>"; };
+		4DF439307B221ACE1CB3C3A4 /* Pods_PixelMerger_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixelMerger_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC4821B00210595862AC2F1 /* Pods-PixelMerger-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelMerger-macOS.release.xcconfig"; path = "Target Support Files/Pods-PixelMerger-macOS/Pods-PixelMerger-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		A4983D784324B5E96833F057 /* Pods-PixelMerger-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelMerger-macOS.debug.xcconfig"; path = "Target Support Files/Pods-PixelMerger-macOS/Pods-PixelMerger-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F26CD95D5AE13CE06779E5BC /* Pods_PixelMerger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixelMerger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F586396B5EB7602EE58BF3D8 /* Pods-PixelMerger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelMerger.release.xcconfig"; path = "Target Support Files/Pods-PixelMerger/Pods-PixelMerger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +43,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556143A7AEA67ED1C784A698 /* Pods_PixelMerger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A66FF8B23549A18009DE9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24FDB6CC57602FBAA7CBDBD1 /* Pods_PixelMerger_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,8 +61,11 @@
 		3A66FF74235499FE009DE9DF = {
 			isa = PBXGroup;
 			children = (
-				3A66FF80235499FE009DE9DF /* PixelMerger */,
+				3A66FF80235499FE009DE9DF /* Sources */,
+				3A66FFB223549B7C009DE9DF /* Resources */,
 				3A66FF7F235499FE009DE9DF /* Products */,
+				84A4792FB2F4FA037DA1D99D /* Pods */,
+				7BDA1A7751C956003D9B78C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -39,17 +73,50 @@
 			isa = PBXGroup;
 			children = (
 				3A66FF7E235499FE009DE9DF /* PixelMerger.framework */,
+				3A66FF8E23549A18009DE9DF /* PixelMerger_macOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A66FF80235499FE009DE9DF /* PixelMerger */ = {
+		3A66FF80235499FE009DE9DF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				3A66FF81235499FE009DE9DF /* PixelMerger.h */,
+				3A66FF9023549A18009DE9DF /* PixelMerger_macOS.h */,
 				3A66FF82235499FE009DE9DF /* Info.plist */,
+				3A66FFBC23549BAC009DE9DF /* PixelMerger.swift */,
 			);
-			path = PixelMerger;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		3A66FFB223549B7C009DE9DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3A66FFB323549B90009DE9DF /* Count.mov */,
+				3A66FFB523549B90009DE9DF /* In The Forrest 03.mp4 */,
+				3A66FFB423549B90009DE9DF /* sample_iTunes.mov */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7BDA1A7751C956003D9B78C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F26CD95D5AE13CE06779E5BC /* Pods_PixelMerger.framework */,
+				4DF439307B221ACE1CB3C3A4 /* Pods_PixelMerger_macOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84A4792FB2F4FA037DA1D99D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3952CE39A09536E0FDFEE807 /* Pods-PixelMerger.debug.xcconfig */,
+				F586396B5EB7602EE58BF3D8 /* Pods-PixelMerger.release.xcconfig */,
+				A4983D784324B5E96833F057 /* Pods-PixelMerger-macOS.debug.xcconfig */,
+				4FC4821B00210595862AC2F1 /* Pods-PixelMerger-macOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,6 +130,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3A66FF8923549A18009DE9DF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -70,6 +144,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A66FF86235499FE009DE9DF /* Build configuration list for PBXNativeTarget "PixelMerger" */;
 			buildPhases = (
+				F7FC84746260A9D5237FF604 /* [CP] Check Pods Manifest.lock */,
 				3A66FF79235499FE009DE9DF /* Headers */,
 				3A66FF7A235499FE009DE9DF /* Sources */,
 				3A66FF7B235499FE009DE9DF /* Frameworks */,
@@ -84,6 +159,25 @@
 			productReference = 3A66FF7E235499FE009DE9DF /* PixelMerger.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3A66FF8D23549A18009DE9DF /* PixelMerger-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A66FF9323549A18009DE9DF /* Build configuration list for PBXNativeTarget "PixelMerger-macOS" */;
+			buildPhases = (
+				1590BAF519719ACED27B8C8C /* [CP] Check Pods Manifest.lock */,
+				3A66FF8923549A18009DE9DF /* Headers */,
+				3A66FF8A23549A18009DE9DF /* Sources */,
+				3A66FF8B23549A18009DE9DF /* Frameworks */,
+				3A66FF8C23549A18009DE9DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PixelMerger-macOS";
+			productName = "PixelMerger-macOS";
+			productReference = 3A66FF8E23549A18009DE9DF /* PixelMerger_macOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +189,11 @@
 				TargetAttributes = {
 					3A66FF7D235499FE009DE9DF = {
 						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
+					};
+					3A66FF8D23549A18009DE9DF = {
+						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -112,6 +211,7 @@
 			projectRoot = "";
 			targets = (
 				3A66FF7D235499FE009DE9DF /* PixelMerger */,
+				3A66FF8D23549A18009DE9DF /* PixelMerger-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -121,16 +221,85 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A66FFB623549B90009DE9DF /* Count.mov in Resources */,
+				3A66FFB823549B90009DE9DF /* sample_iTunes.mov in Resources */,
+				3A66FFBA23549B90009DE9DF /* In The Forrest 03.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A66FF8C23549A18009DE9DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A66FFB723549B90009DE9DF /* Count.mov in Resources */,
+				3A66FFB923549B90009DE9DF /* sample_iTunes.mov in Resources */,
+				3A66FFBB23549B90009DE9DF /* In The Forrest 03.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1590BAF519719ACED27B8C8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PixelMerger-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7FC84746260A9D5237FF604 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PixelMerger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A66FF7A235499FE009DE9DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A66FFBD23549BAC009DE9DF /* PixelMerger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A66FF8A23549A18009DE9DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A66FFBE23549BAC009DE9DF /* PixelMerger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,14 +428,43 @@
 		};
 		3A66FF87235499FE009DE9DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3952CE39A09536E0FDFEE807 /* Pods-PixelMerger.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2QHTY6FMW2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PixelMerger/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.hexagons.PixelMerger;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A66FF88235499FE009DE9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F586396B5EB7602EE58BF3D8 /* Pods-PixelMerger.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2QHTY6FMW2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -279,29 +477,62 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Release;
 		};
-		3A66FF88235499FE009DE9DF /* Release */ = {
+		3A66FF9423549A18009DE9DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4983D784324B5E96833F057 /* Pods-PixelMerger-macOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2QHTY6FMW2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PixelMerger/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.hexagons.PixelMerger;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.hexagons.PixelMerger-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3A66FF9523549A18009DE9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FC4821B00210595862AC2F1 /* Pods-PixelMerger-macOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2QHTY6FMW2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.hexagons.PixelMerger-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -322,6 +553,15 @@
 			buildConfigurations = (
 				3A66FF87235499FE009DE9DF /* Debug */,
 				3A66FF88235499FE009DE9DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A66FF9323549A18009DE9DF /* Build configuration list for PBXNativeTarget "PixelMerger-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A66FF9423549A18009DE9DF /* Debug */,
+				3A66FF9523549A18009DE9DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
