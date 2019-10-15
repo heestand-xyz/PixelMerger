@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RenderKit
 import PixelKit
 
 public class PixelMerger {
@@ -18,85 +19,113 @@ public class PixelMerger {
         case noUrls
     }
     
-    public static func merge(videos: [String], done: @escaping (URL) -> (), failed: @escaping (Error) -> ()) {
+    public static func merge(videos: [String], at resolution: Resolution, fps: Int, progress: @escaping (Int, CGFloat) -> (), done: @escaping (URL) -> (), failed: @escaping (Error) -> ()) {
         let urls = videos.compactMap({ video in self.getUrl(from: video) })
         guard urls.count == videos.count else { failed(MergeError.urlNotFound); return }
-        merge(urls: urls, done: done, failed: failed)
+        merge(urls: urls, at: resolution, fps: fps, progress: progress, done: done, failed: failed)
     }
     
-    public static func merge(urls: [URL], done: @escaping (URL) -> (), failed: @escaping (Error) -> ()) {
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("PixelMerger").appendingPathComponent("merged-video-\(UUID().uuidString).mov")
-        merge(urls: urls, to: url, done: {
-            done(url)
-        }, failed: failed)
-    }
-    
-    public static func merge(videos: [String], to url: URL, done: @escaping () -> (), failed: @escaping (Error) -> ()) {
-        let urls = videos.compactMap({ video in self.getUrl(from: video) })
-        guard urls.count == videos.count else { failed(MergeError.urlNotFound); return }
-        merge(urls: urls, to: url, done: done, failed: failed)
-    }
-    
-    public static func merge(urls: [URL], to url: URL, done: @escaping () -> (), failed: @escaping (Error) -> ()) {
+    public static func merge(urls: [URL], at resolution: Resolution, fps: Int, progress: @escaping (Int, CGFloat) -> (), done: @escaping (URL) -> (), failed: @escaping (Error) -> ()) {
+        
+        print("")
+        print("")
+        print("")
         print("PixelMerger - Merge")
         PixelKit.main.render.engine.renderMode = .manual
         
         guard !urls.isEmpty else { failed(MergeError.noUrls); return }
         var urls = urls
         
+        let colorPix = ColorPIX(at: resolution)
+        colorPix.color = .black
+        
         let videoPix = VideoPIX()
         videoPix.name = "pixelmerger-video"
         
+        let recordPix = RecordPIX()
+        recordPix.name = "pixelmerger-record"
+        recordPix.input = colorPix & videoPix
+        
+        recordPix.realtime = false
+        recordPix.timeSync = false
+        recordPix.fps = fps
+        recordPix.directMode = false
+        
         func finalVideoDone() {
             print("PixelMerger - Final Video Done")
-            done()
+            recordPix.stopRec({ url in
+                print("PixelMerger - Record Stopped")
+                done(url)
+            }) { error in
+                failed(error)
+            }
         }
         
+        var videoIndex = 0
         func nextVideo(url: URL) {
+            print("")
+            print("")
             print("PixelMerger - Next Video:", url.lastPathComponent)
             videoPix.load(url: url, done: {
                 
-                let frameCount = videoPix.frameCount.val
+                print("PixelMerger - Video Loaded")
                 
-                func finalFrameDone() {
-                    print("PixelMerger - Final Frame Done")
-                    if !urls.isEmpty {
-                        nextVideo(url: urls.remove(at: 0))
-                    } else {
-                        finalVideoDone()
-                    }
-                }
+                videoPix.nextFrame(done: {
                 
-                func nextFrame(index: Int) {
-                    print("PixelMerger - Next Frame:", index)
-                    do {
-                        try PixelKit.main.render.engine.manuallyRender({
-                            
-                            print("PixelMerger - Manual Render Done:", index)
-
-                            if index < frameCount - 1 {
-                                let nextIndex = index + 1
-                                videoPix.seekFrame(to: nextIndex, done: {
-                                    
-                                    print("PixelMerger - Seek Done:", index)
-
-                                    nextFrame(index:nextIndex)
-                                                    
-                                })
-                            } else {
-                               finalFrameDone()
-                            }
-                            
-                        })
-                    } catch {
-                        failed(error)
+                    let frameCount = videoPix.frameCount.val
+                    
+                    func finalFrameDone() {
+                        print("PixelMerger - Final Frame Done")
+                        if !urls.isEmpty {
+                            videoIndex += 1
+                            nextVideo(url: urls.remove(at: 0))
+                        } else {
+                            finalVideoDone()
+                        }
                     }
-                }
-                nextFrame(index: 0)
+                    
+                    func nextFrame(index: Int) {
+                        progress(videoIndex, CGFloat(index) / CGFloat(frameCount))
+                        print("PixelMerger - Next Frame:", index)
+                        do {
+                            try PixelKit.main.render.engine.manuallyRender({
+                                
+                                print("PixelMerger - Manual Render Done:", index)
+                                print("")
+
+                                if index < frameCount - 1 {
+                                    let nextIndex = index + 1
+                                    videoPix.seekFrame(to: nextIndex, done: {
+                                        
+                                        print("PixelMerger - Seek Done:", index)
+
+                                        nextFrame(index:nextIndex)
+                                                        
+                                    })
+                                } else {
+                                   finalFrameDone()
+                                }
+                                
+                            })
+                        } catch {
+                            failed(error)
+                        }
+                    }
+                    nextFrame(index: 0)
+                    
+                    
+                })
                 
             })
         }
-        nextVideo(url: urls.remove(at: 0))
+        
+        do {
+            try recordPix.startRec()
+            print("PixelMerger - Record Started")
+            nextVideo(url: urls.remove(at: 0))
+        } catch {
+            failed(error)
+        }
         
     }
     
