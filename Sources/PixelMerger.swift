@@ -27,6 +27,7 @@ public class PixelMerger {
     }
     
     public struct VideoMetaData {
+        public let name: String
         public let fps: Int
         public let frames: Int
         public let duration: Double
@@ -196,6 +197,8 @@ public class PixelMerger {
         
         videoPix.load(url: url, done: { resolution in
 
+            let name = url.lastPathComponent
+            
             guard let fps = videoPix.fps else {
                 failed(MergeError.badMetaData("fps"))
                 videoPix.destroy()
@@ -212,7 +215,7 @@ public class PixelMerger {
                 return
             }
 
-            let videoMetaData = VideoMetaData(fps: fps, frames: frames, duration: duration, resolution: resolution.size.cg)
+            let videoMetaData = VideoMetaData(name: name, fps: fps, frames: frames, duration: duration, resolution: resolution.size.cg)
             
             done(videoMetaData)
             videoPix.destroy()
