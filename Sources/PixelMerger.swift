@@ -150,7 +150,7 @@ public class PixelMerger {
                     }
                     nextFrame(index: 0)
                     
-                    
+
                 })
                 
             })
