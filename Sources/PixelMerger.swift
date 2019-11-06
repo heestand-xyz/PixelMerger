@@ -26,7 +26,7 @@ public class PixelMerger {
         public let totalFraction: CGFloat
     }
     
-    public struct VideoMetaData {
+    public struct VideoMetaData: Codable {
         public let name: String
         public let fps: Int
         public let frames: Int
