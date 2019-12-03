@@ -232,7 +232,7 @@ public class PixelMerger {
     
     /// https://stackoverflow.com/questions/31984474/swift-merge-audio-and-video-files-into-one-video
     
-    public static func mergeVideoWithAudio(videoUrl: URL, audioUrl: URL, success: @escaping ((URL) -> Void), failure: @escaping ((Error?) -> Void)) {
+    public static func mergeVideoWithAudio(name: String, videoUrl: URL, audioUrl: URL, success: @escaping ((URL) -> Void), failure: @escaping ((Error?) -> Void)) {
 
 
         let mixComposition: AVMutableComposition = AVMutableComposition()
@@ -267,7 +267,7 @@ public class PixelMerger {
         mutableVideoComposition.renderSize = CGSize(width: 480, height: 640)
 
         if let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            let outputURL = URL(fileURLWithPath: documentsPath).appendingPathComponent("\("fileName").m4v")
+            let outputURL = URL(fileURLWithPath: documentsPath).appendingPathComponent("\(name).m4v")
 
             do {
                 if FileManager.default.fileExists(atPath: outputURL.path) {
@@ -286,17 +286,23 @@ public class PixelMerger {
                     switch exportSession.status {
                     case .failed:
                         if let _error = exportSession.error {
-                            failure(_error)
+                            DispatchQueue.main.async {
+                                failure(_error)
+                            }
                         }
 
                     case .cancelled:
                         if let _error = exportSession.error {
-                            failure(_error)
+                            DispatchQueue.main.async {
+                                failure(_error)
+                            }
                         }
 
                     default:
                         print("finished")
-                        success(outputURL)
+                        DispatchQueue.main.async {
+                            success(outputURL)
+                        }
                     }
                 })
             } else {
