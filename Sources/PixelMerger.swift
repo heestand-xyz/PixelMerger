@@ -9,6 +9,10 @@
 import Foundation
 import RenderKit
 import PixelKit
+import UIKit
+import AVFoundation
+import AVKit
+import AssetsLibrary
 
 public class PixelMerger {
     
@@ -223,6 +227,187 @@ public class PixelMerger {
         })
         
     }
+    
+    // MARK: - Video & Audio Merge
+    
+    /// https://stackoverflow.com/questions/31984474/swift-merge-audio-and-video-files-into-one-video
+    
+    public static func mergeVideoWithAudio(videoUrl: URL, audioUrl: URL, success: @escaping ((URL) -> Void), failure: @escaping ((Error?) -> Void)) {
+
+
+        let mixComposition: AVMutableComposition = AVMutableComposition()
+        var mutableCompositionVideoTrack: [AVMutableCompositionTrack] = []
+        var mutableCompositionAudioTrack: [AVMutableCompositionTrack] = []
+        let totalVideoCompositionInstruction : AVMutableVideoCompositionInstruction = AVMutableVideoCompositionInstruction()
+
+        let aVideoAsset: AVAsset = AVAsset(url: videoUrl)
+        let aAudioAsset: AVAsset = AVAsset(url: audioUrl)
+
+        if let videoTrack = mixComposition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid), let audioTrack = mixComposition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid) {
+            mutableCompositionVideoTrack.append(videoTrack)
+            mutableCompositionAudioTrack.append(audioTrack)
+
+        if let aVideoAssetTrack: AVAssetTrack = aVideoAsset.tracks(withMediaType: .video).first, let aAudioAssetTrack: AVAssetTrack = aAudioAsset.tracks(withMediaType: .audio).first {
+            do {
+                try mutableCompositionVideoTrack.first?.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: aVideoAssetTrack.timeRange.duration), of: aVideoAssetTrack, at: CMTime.zero)
+                try mutableCompositionAudioTrack.first?.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: aVideoAssetTrack.timeRange.duration), of: aAudioAssetTrack, at: CMTime.zero)
+                   videoTrack.preferredTransform = aVideoAssetTrack.preferredTransform
+
+            } catch{
+                print(error)
+            }
+
+
+           totalVideoCompositionInstruction.timeRange = CMTimeRangeMake(start: CMTime.zero,duration: aVideoAssetTrack.timeRange.duration)
+        }
+        }
+
+        let mutableVideoComposition: AVMutableVideoComposition = AVMutableVideoComposition()
+        mutableVideoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
+        mutableVideoComposition.renderSize = CGSize(width: 480, height: 640)
+
+        if let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let outputURL = URL(fileURLWithPath: documentsPath).appendingPathComponent("\("fileName").m4v")
+
+            do {
+                if FileManager.default.fileExists(atPath: outputURL.path) {
+
+                    try FileManager.default.removeItem(at: outputURL)
+                }
+            } catch { }
+
+            if let exportSession = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality) {
+                exportSession.outputURL = outputURL
+                exportSession.outputFileType = AVFileType.mp4
+                exportSession.shouldOptimizeForNetworkUse = true
+
+                /// try to export the file and handle the status cases
+                exportSession.exportAsynchronously(completionHandler: {
+                    switch exportSession.status {
+                    case .failed:
+                        if let _error = exportSession.error {
+                            failure(_error)
+                        }
+
+                    case .cancelled:
+                        if let _error = exportSession.error {
+                            failure(_error)
+                        }
+
+                    default:
+                        print("finished")
+                        success(outputURL)
+                    }
+                })
+            } else {
+                failure(nil)
+            }
+        }
+    }
+    
+//    /// Merges video and sound while keeping sound of the video too
+//    ///
+//    /// - Parameters:
+//    ///   - videoUrl: URL to video file
+//    ///   - audioUrl: URL to audio file
+//    ///   - shouldFlipHorizontally: pass True if video was recorded using frontal camera otherwise pass False
+//    ///   - completion: completion of saving: error or url with final video
+//    func mergeVideoAndAudio(videoUrl: URL,
+//                            audioUrl: URL,
+//                            shouldFlipHorizontally: Bool = false,
+//                            completion: @escaping (_ error: Error?, _ url: URL?) -> Void) {
+//
+//        let mixComposition = AVMutableComposition()
+//        var mutableCompositionVideoTrack = [AVMutableCompositionTrack]()
+//        var mutableCompositionAudioTrack = [AVMutableCompositionTrack]()
+//        var mutableCompositionAudioOfVideoTrack = [AVMutableCompositionTrack]()
+//
+//        //start merge
+//
+//        let aVideoAsset = AVAsset(url: videoUrl)
+//        let aAudioAsset = AVAsset(url: audioUrl)
+//
+//        let compositionAddVideo = mixComposition.addMutableTrack(withMediaType: AVMediaType.video,
+//                                                                       preferredTrackID: kCMPersistentTrackID_Invalid)
+//
+//        let compositionAddAudio = mixComposition.addMutableTrack(withMediaType: AVMediaType.audio,
+//                                                                     preferredTrackID: kCMPersistentTrackID_Invalid)
+//
+//        let compositionAddAudioOfVideo = mixComposition.addMutableTrack(withMediaType: AVMediaTypeAudio,
+//                                                                            preferredTrackID: kCMPersistentTrackID_Invalid)
+//
+//        let aVideoAssetTrack: AVAssetTrack = aVideoAsset.tracks(withMediaType: AVMediaTypeVideo)[0]
+//        let aAudioOfVideoAssetTrack: AVAssetTrack? = aVideoAsset.tracks(withMediaType: AVMediaTypeAudio).first
+//        let aAudioAssetTrack: AVAssetTrack = aAudioAsset.tracks(withMediaType: AVMediaTypeAudio)[0]
+//
+//        // Default must have tranformation
+//        compositionAddVideo.preferredTransform = aVideoAssetTrack.preferredTransform
+//
+//        if shouldFlipHorizontally {
+//            // Flip video horizontally
+//            var frontalTransform: CGAffineTransform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+//            frontalTransform = frontalTransform.translatedBy(x: -aVideoAssetTrack.naturalSize.width, y: 0.0)
+//            frontalTransform = frontalTransform.translatedBy(x: 0.0, y: -aVideoAssetTrack.naturalSize.width)
+//            compositionAddVideo.preferredTransform = frontalTransform
+//        }
+//
+//        mutableCompositionVideoTrack.append(compositionAddVideo)
+//        mutableCompositionAudioTrack.append(compositionAddAudio)
+//        mutableCompositionAudioOfVideoTrack.append(compositionAddAudioOfVideo)
+//
+//        do {
+//            try mutableCompositionVideoTrack[0].insertTimeRange(CMTimeRangeMake(kCMTimeZero,
+//                                                                                aVideoAssetTrack.timeRange.duration),
+//                                                                of: aVideoAssetTrack,
+//                                                                at: kCMTimeZero)
+//
+//            //In my case my audio file is longer then video file so i took videoAsset duration
+//            //instead of audioAsset duration
+//            try mutableCompositionAudioTrack[0].insertTimeRange(CMTimeRangeMake(kCMTimeZero,
+//                                                                                aVideoAssetTrack.timeRange.duration),
+//                                                                of: aAudioAssetTrack,
+//                                                                at: kCMTimeZero)
+//
+//            // adding audio (of the video if exists) asset to the final composition
+//            if let aAudioOfVideoAssetTrack = aAudioOfVideoAssetTrack {
+//                try mutableCompositionAudioOfVideoTrack[0].insertTimeRange(CMTimeRangeMake(kCMTimeZero,
+//                                                                                           aVideoAssetTrack.timeRange.duration),
+//                                                                           of: aAudioOfVideoAssetTrack,
+//                                                                           at: kCMTimeZero)
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//
+//        // Exporting
+//        let savePathUrl: URL = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/newVideo.mp4")
+//        do { // delete old video
+//            try FileManager.default.removeItem(at: savePathUrl)
+//        } catch { print(error.localizedDescription) }
+//
+//        let assetExport: AVAssetExportSession = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)!
+//        assetExport.outputFileType = AVFileTypeMPEG4
+//        assetExport.outputURL = savePathUrl
+//        assetExport.shouldOptimizeForNetworkUse = true
+//
+//        assetExport.exportAsynchronously { () -> Void in
+//            switch assetExport.status {
+//            case AVAssetExportSessionStatus.completed:
+//                print("success")
+//                completion(nil, savePathUrl)
+//            case AVAssetExportSessionStatus.failed:
+//                print("failed \(assetExport.error?.localizedDescription ?? "error nil")")
+//                completion(assetExport.error, nil)
+//            case AVAssetExportSessionStatus.cancelled:
+//                print("cancelled \(assetExport.error?.localizedDescription ?? "error nil")")
+//                completion(assetExport.error, nil)
+//            default:
+//                print("complete")
+//                completion(assetExport.error, nil)
+//            }
+//        }
+//
+//    }
     
     // MARK: - URL from Name
     
