@@ -42,10 +42,12 @@ public class PixelMerger {
         public let url: URL
         public let time: Double
         public let duration: Double
-        public init(url: URL, time: Double, duration: Double) {
+        public let volume: Double
+        public init(url: URL, time: Double, duration: Double, volume: Double) {
             self.url = url
             self.time = time
             self.duration = duration
+            self.volume = volume
         }
     }
     
@@ -311,6 +313,7 @@ public class PixelMerger {
                     try zip(videosWithAudio, zip(mutableCompositionAudioTracks, aVideoWithAudioAssetTracks)).forEach { arg in
                         let (meta, (compAndTrack)) = arg
                         let (comp, track) = compAndTrack
+//                        comp.preferredVolume = Float(meta.volume) // did not work
                         try comp.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: track.timeRange.duration), of: track, at: CMTime(seconds: meta.time, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
                     }
                     videoTrack.preferredTransform = aVideoAssetTrack.preferredTransform
