@@ -6,9 +6,9 @@ target 'PixelMerger' do
   use_frameworks!
 
   # Pods for PixelMerger
-  pod 'LiveValues', :path => '~/Documents/Code/Frameworks/Production/LiveValues'
-  pod 'RenderKit', :path => '~/Documents/Code/Frameworks/Production/RenderKit'
-  pod 'PixelKit', :path => '~/Documents/Code/Frameworks/Production/PixelKit'
+  pod 'LiveValues', :path => '~/Code/Frameworks/Production/LiveValues'
+  pod 'RenderKit', :path => '~/Code/Frameworks/Production/RenderKit'
+  pod 'PixelKit', :path => '~/Code/Frameworks/Production/PixelKit'
 
 end
 
@@ -17,8 +17,8 @@ target 'PixelMerger-macOS' do
   use_frameworks!
 
   # Pods for PixelMerger-macOS
-  pod 'LiveValues', :path => '~/Documents/Code/Frameworks/Production/LiveValues'
-  pod 'RenderKit', :path => '~/Documents/Code/Frameworks/Production/RenderKit'
-  pod 'PixelKit', :path => '~/Documents/Code/Frameworks/Production/PixelKit'
+  pod 'LiveValues', :path => '~/Code/Frameworks/Production/LiveValues'
+  pod 'RenderKit', :path => '~/Code/Frameworks/Production/RenderKit'
+  pod 'PixelKit', :path => '~/Code/Frameworks/Production/PixelKit'
 
 end
