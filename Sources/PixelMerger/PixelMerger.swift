@@ -9,10 +9,8 @@
 import Foundation
 import RenderKit
 import PixelKit
-import UIKit
 import AVFoundation
 import AVKit
-import AssetsLibrary
 
 public class PixelMerger {
     
